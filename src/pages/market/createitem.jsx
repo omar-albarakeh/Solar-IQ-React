@@ -6,7 +6,14 @@ import '../styles/styles.css';
 
 
 const CreateItem = () => {
- 
+  const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
+
+  const onSubmit = async (data) => {
+    await createItem(data);
+    navigate('/create-item');
+  };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       
