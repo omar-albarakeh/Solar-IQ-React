@@ -29,6 +29,7 @@ const Login = () => {
           onChange={handleChange}
           required
         />
+        <AuthButton type="submit">Login</AuthButton>
          </form>
     </AuthContainer>
   );
