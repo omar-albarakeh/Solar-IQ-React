@@ -32,3 +32,39 @@
   color: #333;
 }
 
+.update-item-form-container input,
+.update-item-form-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.update-item-form-container input:focus,
+.update-item-form-container textarea:focus {
+  border-color: #2196f3;
+  outline: none;
+}
+
+.update-item-form-container textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.update-item-form-container button {
+  padding: 10px 20px;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.update-item-form-container button:hover {
+  background-color: #1976d2;
+}
