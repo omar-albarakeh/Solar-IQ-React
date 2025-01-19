@@ -8,11 +8,12 @@ import ErrorMessage from '../components/errormessage';
 
 const Login = () => {
 
+     const [formData, setFormData] = useState({ email: '', password: '' });
   return (
     <AuthContainer>
          <AuthTitle title="Login" subtitle="Welcome back! Please login to your account." />
          <ErrorMessage message={error} />
-         <form onSubmit={}>
+         <form onSubmit={handleSubmit}>
              <InputField
           type="email"
           name="email"
