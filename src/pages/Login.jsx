@@ -11,6 +11,7 @@ const Login = () => {
   return (
     <AuthContainer>
          <AuthTitle title="Login" subtitle="Welcome back! Please login to your account." />
+         <ErrorMessage message={error} />
     </AuthContainer>
   );
 };
