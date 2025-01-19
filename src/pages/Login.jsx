@@ -9,6 +9,8 @@ import ErrorMessage from '../components/errormessage';
 const Login = () => {
 
      const [formData, setFormData] = useState({ email: '', password: '' });
+     const [error, setError] = useState(null);
+     const navigate = useNavigate();
   return (
     <AuthContainer>
          <AuthTitle title="Login" subtitle="Welcome back! Please login to your account." />
