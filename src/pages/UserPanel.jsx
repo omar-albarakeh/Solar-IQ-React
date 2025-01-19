@@ -22,8 +22,18 @@ const UserPanel = ({ token }) => {
     loadUsers();
   }, [token]);
 
- 
+  const handleBlockUser = async (userId) => {
+    try {
+      const updatedUser = await blockUser(userId, token);
+      setUsers((prevUsers) =>
+        prevUsers.map((user) => (user.id === userId ? updatedUser : user))
+      );
+    } catch (err) {
+      setError(err.message);
+    }
+  };
 
+  
   return (
     <div>
       <h1>User Management Panel</h1>
