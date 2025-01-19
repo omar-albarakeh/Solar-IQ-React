@@ -31,6 +31,7 @@ const Login = () => {
         />
         <AuthButton type="submit">Login</AuthButton>
          </form>
+         <AuthFooter text="Don't have an account?" linkText="Signup" linkUrl="/signup" />
     </AuthContainer>
   );
 };
