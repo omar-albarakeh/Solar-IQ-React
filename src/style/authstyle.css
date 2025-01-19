@@ -15,3 +15,25 @@ html, body {
   font-family: 'Poppins', sans-serif;
 }
 
+.auth-box {
+  background-color: rgba(255, 255, 255, 0);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); 
+  max-width: 400px;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.auth-title {
+  font-size: 28px;
+  font-weight: 700; 
+  text-align: center;
+  margin-bottom: 10px;
+  color: #333;
+  background: linear-gradient(90deg, #007BFF, #00C6FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
