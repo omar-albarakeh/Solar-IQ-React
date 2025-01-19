@@ -17,7 +17,16 @@ class AuthService {
     }
   }
 
-  
+  async validateToken(token) {
+    try {
+      const response = await this.api.get('/validate', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export default new AuthService();
