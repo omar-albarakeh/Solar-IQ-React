@@ -40,3 +40,16 @@ export const unblockUser = async (userId, token) => {
   }
 };
 
+export const fetchAllUsers = async (token) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/users`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data; 
+  } catch (error) {
+    console.error('Error fetching users:', error.response?.data?.message || error.message);
+    throw error;
+  }
+};
