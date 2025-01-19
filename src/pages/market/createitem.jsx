@@ -24,7 +24,11 @@ const CreateItem = () => {
       <input {...register('imageUrl')} placeholder="Image URL" />
       <input {...register('quantity')} placeholder="Quantity" type="number" required />
       <button type="submit">Create Item</button>
+      <button onClick={() => navigate('/market-panel')} className="back-button">
+        Back to Market Panel
+      </button>
     </form>
+    
   );
 };
 
