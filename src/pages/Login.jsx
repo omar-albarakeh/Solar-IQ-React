@@ -12,6 +12,9 @@ const Login = () => {
     <AuthContainer>
          <AuthTitle title="Login" subtitle="Welcome back! Please login to your account." />
          <ErrorMessage message={error} />
+         <form onSubmit={}>
+
+         </form>
     </AuthContainer>
   );
 };
