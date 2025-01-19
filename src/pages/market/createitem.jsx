@@ -1,9 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { createItem } from './itemsService';
+import { createItem } from '../../services/marketservice';
 import { useNavigate } from 'react-router-dom';
-import '../styles/styles.css';
-
 
 const CreateItem = () => {
   const { register, handleSubmit } = useForm();
@@ -15,7 +13,7 @@ const CreateItem = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className="create-item-form">
       <input {...register('name')} placeholder="Name" required />
       <input {...register('price')} placeholder="Price" type="number" required />
       <input {...register('category')} placeholder="Category" required />
