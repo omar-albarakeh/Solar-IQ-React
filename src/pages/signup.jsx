@@ -24,6 +24,18 @@ const Signup = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(null);
+
+    try {
+      const response = await AuthService.signup(formData);
+      console.log('Signup successful:', response);
+      navigate('/login');
+    } catch (err) {
+      setError(err.response?.data?.message || 'An unexpected error occurred.');
+    }
+  };
 
   return (
     <AuthContainer>
