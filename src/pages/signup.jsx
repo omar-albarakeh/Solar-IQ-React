@@ -29,7 +29,28 @@ const Signup = () => {
           onChange={handleChange}
           required
         />
-       
+        <InputField
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={formData.password}
+          onChange={handleChange}
+          required
+        />
+        <div className="input-group">
+          <select
+            name="type"
+            value={formData.type}
+            onChange={handleChange}
+            className="input-field"
+            required
+          >
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+            <option value="engineer">Engineer</option>
+          </select>
+        </div>
+        
       </form>
     </AuthContainer>
   );
