@@ -47,3 +47,17 @@ h2 {
   cursor: pointer;
 }
 
+.block-btn {
+  background-color: #ff6b6b;
+  color: white;
+}
+
+.unblock-btn {
+  background-color: #4caf50;
+  color: white;
+}
+
+.action-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
