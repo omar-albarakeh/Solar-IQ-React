@@ -20,6 +20,11 @@ const Signup = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
   return (
     <AuthContainer>
       <AuthTitle title="Signup" subtitle="Create your account" />
