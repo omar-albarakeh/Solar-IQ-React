@@ -11,6 +11,7 @@ class AuthService {
   async login(email, password) {
     try {
       const response = await this.api.post('/login', { email, password });
+      localStorage.setItem('user', JSON.stringify(response.data));
       return response.data;
     } catch (error) {
       throw error;
@@ -25,6 +26,11 @@ class AuthService {
       throw error;
     }
   }
+  getUser() {
+  const user = localStorage.getItem('user');
+  return user ? JSON.parse(user) : null;
+}
+
 }
 
 export default new AuthService();
