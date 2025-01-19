@@ -7,7 +7,23 @@ const UserPanel = ({ token }) => {
   const [error, setError] = useState(null);
 
 
-  
+  useEffect(() => {
+    const loadUsers = async () => {
+      try {
+        const data = await fetchAllUsers(token);
+        setUsers(data.data);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    loadUsers();
+  }, [token]);
+
+ 
+
   return (
     <div>
       <h1>User Management Panel</h1>
