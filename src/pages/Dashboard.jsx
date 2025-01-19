@@ -6,7 +6,29 @@ const Dashboard = () => {
   const [userData, setUserData] = useState(null);
   const navigate = useNavigate();
 
-  
+  useEffect(() => {
+    const token = localStorage.getItem('accessToken');
+
+    if (!token) {
+      navigate('/login');
+      return;
+    }
+
+    try {
+      const decodedToken = jwtDecode(token);
+      setUserData(decodedToken);
+
+      if (decodedToken.type === 'User' || decodedToken.type === 'Engineer') {
+        alert("You can't be here.");
+        navigate('/login');
+      } else if (decodedToken.type === 'admin') {
+        navigate('/dashboard');
+      }
+    } catch (error) {
+      console.error("Invalid or expired token", error);
+      navigate('/login');
+    }
+  }, [navigate]);
 
   if (userData && userData.type === 'admin') {
     return (
