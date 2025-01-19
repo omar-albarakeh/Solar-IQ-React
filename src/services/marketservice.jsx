@@ -14,4 +14,10 @@ export const createItem = async (itemData) => {
   return axios.post(apiUrl, itemData);
 };
 
+export const updateItem = async (id, itemData) => {
+  return axios.put(`${apiUrl}/${id}`, itemData);
+};
 
+export const deleteItem = async (id) => {
+  return axios.delete(`${apiUrl}/${id}`);
+};
