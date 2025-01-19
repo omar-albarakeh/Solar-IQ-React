@@ -33,7 +33,25 @@ const UserPanel = ({ token }) => {
     }
   };
 
-  
+  const handleUnblockUser = async (userId) => {
+    try {
+      const updatedUser = await unblockUser(userId, token);
+      setUsers((prevUsers) =>
+        prevUsers.map((user) => (user.id === userId ? updatedUser : user))
+      );
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
+  if (loading) {
+    return <div>Loading users...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   return (
     <div>
       <h1>User Management Panel</h1>
