@@ -1,0 +1,14 @@
+.delete-item-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.back-button {
+  padding: 10px 20px;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
