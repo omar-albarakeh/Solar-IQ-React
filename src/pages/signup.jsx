@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import AuthService from '../services/AuthService';
 import AuthContainer from '../components/AuthContainer';
 import AuthTitle from '../components/AuthTitle';
 import ErrorMessage from '../components/ErrorMessage';
 import InputField from '../components/InputField';
 import AuthButton from '../components/AuthButton';
-
+import AuthFooter from '../components/AuthFooter';
 
 const Signup = () => {
 
@@ -97,6 +99,7 @@ const handleSubmit = async (e) => {
         />
         <AuthButton type="submit">Signup</AuthButton>
       </form>
+      <AuthFooter text="Already have an account?" linkText="Login" linkUrl="/login" />
     </AuthContainer>
   );
 };
