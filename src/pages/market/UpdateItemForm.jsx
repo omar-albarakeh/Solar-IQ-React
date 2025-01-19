@@ -49,6 +49,9 @@ const UpdateItemForm = () => {
 
   return (
     <div className="update-item-form-container">
+        <button onClick={() => navigate('/market-panel')} className="back-button">
+        Back to Market Panel
+      </button>
       <h2>Update Item</h2>
       <form onSubmit={handleSubmit}>
         <label>
@@ -80,6 +83,7 @@ const UpdateItemForm = () => {
           <input type="number" name="quantity" value={item.quantity} onChange={handleChange} />
         </label>
         <button type="submit">Update Item</button>
+        
       </form>
     </div>
   );
