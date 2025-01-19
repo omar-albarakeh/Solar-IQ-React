@@ -1,3 +1,4 @@
+// Updated User Panel Component
 import React, { useEffect, useState } from 'react';
 import { blockUser, unblockUser, fetchAllUsers } from '../services/userpanelservice';
 import '../style/userpanel.css';
@@ -7,48 +8,53 @@ const UserPanel = ({ token }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const loadUsers = async () => {
-      try {
-        const data = await fetchAllUsers(token);
-        setUsers(data.data);
-        setLoading(false);
-      } catch (err) {
-        setError(err.message);
-        setLoading(false);
-      }
-    };
 
-    loadUsers();
-  }, [token]);
+  useEffect(() => {
+  const loadUsers = async () => {
+    try {
+      const data = await fetchAllUsers(token);
+      console.log('Fetched users:', data.data); // Debugging
+      setUsers(data.data); // Ensure `data.data` contains the users array
+      setLoading(false);
+    } catch (err) {
+      setError(err.message);
+      setLoading(false);
+    }
+  };
+
+  loadUsers();
+}, [token]);
+
 
   const handleBlockUser = async (userId) => {
-    try {
-      const updatedData = await blockUser(userId, token);
-      const updatedUser = updatedData.user;
-      setUsers((prevUsers) =>
-        prevUsers.map((user) =>
-          user.id === userId ? { ...user, blocked: updatedUser.blocked } : user
-        )
-      );
-    } catch (err) {
-      setError(err.message);
-    }
-  };
+  console.log('Blocking user with ID:', userId); 
+  try {
+    const updatedUser = await blockUser(userId, token);
+    setUsers((prevUsers) =>
+      prevUsers.map((user) =>
+        user._id === userId ? { ...user, blocked: true } : user
+      )
+    );
+  } catch (err) {
+    setError(err.message);
+  }
+};
+
 
   const handleUnblockUser = async (userId) => {
-    try {
-      const updatedData = await unblockUser(userId, token);
-      const updatedUser = updatedData.user;
-      setUsers((prevUsers) =>
-        prevUsers.map((user) =>
-          user.id === userId ? { ...user, blocked: updatedUser.blocked } : user
-        )
-      );
-    } catch (err) {
-      setError(err.message);
-    }
-  };
+  console.log('Unblocking user with ID:', userId);
+  try {
+    const updatedUser = await unblockUser(userId, token);
+    setUsers((prevUsers) =>
+      prevUsers.map((user) =>
+        user._id === userId ? { ...user, blocked: false } : user
+      )
+    );
+  } catch (err) {
+    setError(err.message);
+  }
+};
+
 
   const dismissError = () => setError(null);
 
