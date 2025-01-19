@@ -1,7 +1,6 @@
 import AuthService from '../services/AuthService';
 
 function UserProfile() {
-    
   const user = AuthService.getUser();
 
   if (!user) {
@@ -12,6 +11,8 @@ function UserProfile() {
     <div>
       <h1>User Profile</h1>
       <p>Email: {user.email}</p>
+      <p>Name: {user.name}</p>
+      <p>Role: {user.type}</p>
     </div>
   );
 }

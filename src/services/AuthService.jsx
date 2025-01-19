@@ -1,19 +1,17 @@
 import axios from 'axios';
-import jwtDecode from 'jwt-decode';
-
+import { jwtDecode } from 'jwt-decode';
 
 class AuthService {
   constructor() {
     this.api = axios.create({
-      baseURL: 'http://localhost:3001/auth', 
+      baseURL: 'http://localhost:3001/auth',
     });
   }
-
 
   async login(email, password) {
     try {
       const response = await this.api.post('/login', { email, password });
-      localStorage.setItem('user', JSON.stringify(response.data));
+      localStorage.setItem('accessToken', response.data.accessToken); 
       return response.data;
     } catch (error) {
       throw error;
@@ -28,12 +26,16 @@ class AuthService {
       throw error;
     }
   }
-  getUser() {
- const token = localStorage.getItem('accessToken');
-const decodedToken = jwtDecode(token);
-console.log(decodedToken);
-}
 
+  getUser() {
+    const token = localStorage.getItem('accessToken');
+    if (!token) {
+      return null;
+    }
+    const decodedToken = jwtDecode(token);
+    console.log(decodedToken);
+    return decodedToken;
+  }
 }
 
 export default new AuthService();
