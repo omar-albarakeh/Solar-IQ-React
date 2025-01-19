@@ -13,7 +13,14 @@ const Signup = () => {
       <AuthTitle title="Signup" subtitle="Create your account" />
       <ErrorMessage message={error} />
        <form onSubmit={handleSubmit}>
-       
+        <InputField
+          type="text"
+          name="name"
+          placeholder="Name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
       </form>
     </AuthContainer>
   );
