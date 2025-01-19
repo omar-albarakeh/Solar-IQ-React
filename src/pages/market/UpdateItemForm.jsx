@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getItemById, updateItem } from "../../services/marketservice";
+import "../../style/updateitemform.css";
 
 const UpdateItemForm = () => {
   const { id } = useParams();
