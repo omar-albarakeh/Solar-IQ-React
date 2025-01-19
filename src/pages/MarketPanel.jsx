@@ -1,20 +1,19 @@
-import AuthService from '../services/AuthService';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function UserProfile() {
-  const user = AuthService.getUser();
-
-  if (!user) {
-    return <div>No user information available</div>;
-  }
+const MarketPanel = () => {
+  const navigate = useNavigate();
 
   return (
-    <div>
-      <h1>User Profile</h1>
-      <p>Email: {user.email}</p>
-      <p>Name: {user.name}</p>
-      <p>Role: {user.type}</p>
+    <div className="market-panel-container">
+      <h2>Market Panel</h2>
+      <div className="market-panel-buttons">
+        <button onClick={() => navigate('/create-item')}>Create Item</button>
+        <button onClick={() => navigate('/update-item')}>Update Item</button>
+        <button onClick={() => navigate('/delete-item')}>Delete Item</button>
+      </div>
     </div>
   );
-}
+};
 
-export default UserProfile;
+export default MarketPanel;
