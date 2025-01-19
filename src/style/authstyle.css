@@ -37,3 +37,14 @@ html, body {
   -webkit-text-fill-color: transparent;
 }
 
+.auth-subtitle {
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 25px;
+  color: #555;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
