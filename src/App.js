@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard';
 import UserPanel from './pages/UserPanel';
 import MarketPanel from './pages/MarketPanel';
 import CreateItem from './pages/market/createitem';
+import DeleteItem from './pages/market/DeleteItem';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/user-panel" element={<UserPanel />} />
           <Route path="/market-panel" element={<MarketPanel />} />
           <Route path="/create-item" element={<CreateItem />} />
+          <Route path="/delete-item" element={<DeleteItem />} />
           <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
       </div>
