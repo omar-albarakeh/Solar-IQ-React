@@ -2,7 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { blockUser, unblockUser, fetchAllUsers } from '../services/userpanelservice';
 
 const UserPanel = ({ token }) => {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
+
+  
   return (
     <div>
       <h1>User Management Panel</h1>
