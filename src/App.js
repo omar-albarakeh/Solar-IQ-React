@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
+import UserPanel from './pages/UserPanel';
+import MarketPanel from './pages/MarketPanel';
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/user-panel" element={<UserPanel />} />
+          <Route path="/market-panel" element={<MarketPanel />} />
           <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
       </div>
