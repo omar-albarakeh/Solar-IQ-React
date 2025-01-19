@@ -17,6 +17,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/user-panel" element={<UserPanel />} />
           <Route path="/market-panel" element={<MarketPanel />} />
+          <Route path="/create-item" element={<CreateItem />} />
           <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
       </div>
