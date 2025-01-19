@@ -22,7 +22,7 @@ const Dashboard = () => {
       if (decodedToken.type === 'User' || decodedToken.type === 'Engineer') {
         alert("You can't be here.");
         navigate('/login');
-      } else if (decodedToken.type === 'admin') {
+      } else if (decodedToken.type === 'Admin') {
         navigate('/dashboard');
       }
     } catch (error) {

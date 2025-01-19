@@ -41,7 +41,7 @@ html, body {
   font-size: 16px;
   text-align: center;
   margin-bottom: 25px;
-  color: #555;
+  color: hsl(0, 18%, 93%);
 }
 
 .input-group {

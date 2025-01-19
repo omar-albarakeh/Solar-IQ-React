@@ -8,15 +8,18 @@ class AuthService {
     });
   }
 
-  async login(email, password) {
-    try {
-      const response = await this.api.post('/login', { email, password });
-      localStorage.setItem('accessToken', response.data.accessToken); 
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
+ async login(email, password) {
+  try {
+    const response = await this.api.post('/login', { email, password });
+    console.log('Server response:', response.data); 
+    const accessToken = response.data.data.accessToken; 
+    console.log('Token received from server:', accessToken); 
+    localStorage.setItem('accessToken', accessToken);
+    return response.data;
+  } catch (error) {
+    throw error;
   }
+}
 
   async signup(userData) {
     try {
