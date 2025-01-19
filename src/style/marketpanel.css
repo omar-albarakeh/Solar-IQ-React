@@ -43,3 +43,31 @@
 }
 
 
+.create-button {
+  background-color: #45a049;
+  color: white;
+}
+
+.create-button:hover {
+  background-color: #218838;
+}
+
+
+.update-button {
+  background-color: #ffc107;
+  color: black;
+}
+
+.update-button:hover {
+  background-color: #e0a800;
+}
+
+
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
