@@ -25,3 +25,12 @@ h2 {
   align-items: center;
 }
 
+.user-info {
+  flex-grow: 1;
+}
+
+.user-name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
