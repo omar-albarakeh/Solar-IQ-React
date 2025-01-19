@@ -48,7 +48,22 @@ const UpdateItemForm = () => {
 
   return (
     <div className="update-item-form-container">
-      
+      <h2>Update Item</h2>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Name:
+          <input type="text" name="name" value={item.name} onChange={handleChange} />
+        </label>
+        <label>
+          Price:
+          <input type="number" name="price" value={item.price} onChange={handleChange} />
+        </label>
+        <label>
+          Capacity:
+          <input type="number" name="capacity" value={item.capacity} onChange={handleChange} />
+        </label>
+        
+      </form>
     </div>
   );
 };
