@@ -11,7 +11,7 @@ const UserPanel = ({ token }) => {
     const loadUsers = async () => {
       try {
         const data = await fetchAllUsers(token);
-        setUsers(data.data); 
+        setUsers(data.data);
         setLoading(false);
       } catch (err) {
         setError(err.message);
@@ -24,9 +24,12 @@ const UserPanel = ({ token }) => {
 
   const handleBlockUser = async (userId) => {
     try {
-      const updatedUser = await blockUser(userId, token);
+      const updatedData = await blockUser(userId, token);
+      const updatedUser = updatedData.user;
       setUsers((prevUsers) =>
-        prevUsers.map((user) => (user.id === userId ? updatedUser : user))
+        prevUsers.map((user) =>
+          user.id === userId ? { ...user, blocked: updatedUser.blocked } : user
+        )
       );
     } catch (err) {
       setError(err.message);
@@ -35,22 +38,21 @@ const UserPanel = ({ token }) => {
 
   const handleUnblockUser = async (userId) => {
     try {
-      const updatedUser = await unblockUser(userId, token);
+      const updatedData = await unblockUser(userId, token);
+      const updatedUser = updatedData.user;
       setUsers((prevUsers) =>
-        prevUsers.map((user) => (user.id === userId ? updatedUser : user))
+        prevUsers.map((user) =>
+          user.id === userId ? { ...user, blocked: updatedUser.blocked } : user
+        )
       );
     } catch (err) {
       setError(err.message);
     }
   };
 
-  const dismissError = () => {
-    setError(null);
-  };
+  const dismissError = () => setError(null);
 
-  if (loading) {
-    return <div>Loading users...</div>;
-  }
+  if (loading) return <div>Loading users...</div>;
 
   return (
     <div className="user-panel-container">
@@ -67,7 +69,7 @@ const UserPanel = ({ token }) => {
 
       <div className="user-list">
         {users.map((user) => (
-          <div key={user.id} className="user-item">
+          <div key={user._id} className="user-item">
             <div className="user-info">
               <div className="user-name">{user.name}</div>
               <div className="user-email">{user.email}</div>
@@ -80,14 +82,14 @@ const UserPanel = ({ token }) => {
               {user.blocked ? (
                 <button
                   className="action-btn unblock-btn"
-                  onClick={() => handleUnblockUser(user.id)}
+                  onClick={() => handleUnblockUser(user._id)}
                 >
                   Unblock
                 </button>
               ) : (
                 <button
                   className="action-btn block-btn"
-                  onClick={() => handleBlockUser(user.id)}
+                  onClick={() => handleBlockUser(user._id)}
                 >
                   Block
                 </button>
