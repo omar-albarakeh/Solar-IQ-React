@@ -15,7 +15,36 @@ const UpdateItemForm = () => {
     quantity: 0,
   });
 
-  
+  useEffect(() => {
+    const fetchItem = async () => {
+      try {
+        const response = await getItemById(id);
+        setItem(response.data);
+      } catch (error) {
+        console.error('Error fetching item:', error);
+      }
+    };
+
+    fetchItem();
+  }, [id]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setItem((prevItem) => ({
+      ...prevItem,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await updateItem(id, item);
+      navigate('/items'); 
+    } catch (error) {
+      console.error('Error updating item:', error);
+    }
+  };
 
   return (
     <div className="update-item-form-container">
