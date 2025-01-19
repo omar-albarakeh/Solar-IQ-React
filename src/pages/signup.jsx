@@ -50,7 +50,23 @@ const Signup = () => {
             <option value="engineer">Engineer</option>
           </select>
         </div>
-        
+        <InputField
+          type="text"
+          name="phone"
+          placeholder="Phone"
+          value={formData.phone}
+          onChange={handleChange}
+          required
+        />
+        <InputField
+          type="text"
+          name="address"
+          placeholder="Address"
+          value={formData.address}
+          onChange={handleChange}
+          required
+        />
+        <AuthButton type="submit">Signup</AuthButton>
       </form>
     </AuthContainer>
   );
