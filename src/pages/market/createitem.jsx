@@ -1,51 +1,31 @@
-/* Form container styling */
-.create-item-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  max-width: 400px;
-  margin: 50px auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { createItem } from '../../services/marketservice';
+import { useNavigate } from 'react-router-dom';
+import '../../style/createitem.css';
 
-/* Input field styling */
-.create-item-form input {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  outline: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
+const CreateItem = () => {
+  const { register, handleSubmit, reset } = useForm();
+  const navigate = useNavigate();
 
-/* Input field focus effect */
-.create-item-form input:focus {
-  border-color: #28a745;
-  box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
-}
+  const onSubmit = async (data) => {
+    await createItem(data);
+    reset(); 
+    navigate('/create-item');
+  };
 
-/* Button styling */
-.create-item-form button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className="create-item-form">
+      <input {...register('name')} placeholder="Name" required />
+      <input {...register('price')} placeholder="Price" type="number" required />
+      <input {...register('category')} placeholder="Category" required />
+      <input {...register('capacity')} placeholder="Capacity" type="number" required />
+      <input {...register('description')} placeholder="Description" />
+      <input {...register('imageUrl')} placeholder="Image URL" />
+      <input {...register('quantity')} placeholder="Quantity" type="number" required />
+      <button type="submit">Create Item</button>
+    </form>
+  );
+};
 
-/* Button hover effect */
-.create-item-form button:hover {
-  background-color: #218838;
-  transform: translateY(-2px);
-}
-
-/* Button active effect */
-.create-item-form button:active {
-  transform: translateY(0);
-}
+export default CreateItem;
