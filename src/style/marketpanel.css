@@ -1,0 +1,73 @@
+
+.market-panel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 200px auto;
+}
+
+.market-panel-title {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+
+.market-panel-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+
+.market-panel-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%;
+}
+
+
+.market-panel-button:hover {
+  transform: translateY(-2px);
+}
+
+
+.create-button {
+  background-color: #45a049;
+  color: white;
+}
+
+.create-button:hover {
+  background-color: #218838;
+}
+
+
+.update-button {
+  background-color: #ffc107;
+  color: black;
+}
+
+.update-button:hover {
+  background-color: #e0a800;
+}
+
+
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}

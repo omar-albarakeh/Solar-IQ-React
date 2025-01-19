@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Dashboard from './pages/Dashboard';
+import UserPanel from './pages/UserPanel';
+import MarketPanel from './pages/MarketPanel';
+import CreateItem from "./pages/market/createitem";
+import DeleteItem from './pages/market/DeleteItem';
+import ItemList from './pages/market/ItemList'; 
+import UpdateItemForm from './pages/market/UpdateItemForm';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/user-panel" element={<UserPanel />} />
+          <Route path="/market-panel" element={<MarketPanel />} />
+          <Route path="/create-item" element={<CreateItem />} />
+          <Route path="/delete-item" element={<DeleteItem />} />
+          <Route path="/items" element={<ItemList />} /> 
+          <Route path="/update-item/:id" element={<UpdateItemForm />} /> 
+          <Route path="*" element={<Navigate to="/login" />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
