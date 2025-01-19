@@ -13,7 +13,22 @@ const Login = () => {
          <AuthTitle title="Login" subtitle="Welcome back! Please login to your account." />
          <ErrorMessage message={error} />
          <form onSubmit={}>
-
+             <InputField
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+        <InputField
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={formData.password}
+          onChange={handleChange}
+          required
+        />
          </form>
     </AuthContainer>
   );
