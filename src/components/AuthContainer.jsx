@@ -1,5 +1,5 @@
 import React from 'react';
-
+import '../style/authstyle.css';
 const AuthContainer = ({ children }) => {
   return (
     <div className="auth-container">
