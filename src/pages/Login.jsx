@@ -25,7 +25,6 @@ const Login = () => {
     try {
       const response = await AuthService.login(formData.email, formData.password);
       console.log('Login successful:', response);
-      localStorage.setItem('accessToken', response.data.accessToken);
       navigate('/dashboard');
     } catch (err) {
       const status = err.response?.status;

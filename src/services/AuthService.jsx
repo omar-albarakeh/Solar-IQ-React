@@ -1,4 +1,6 @@
 import axios from 'axios';
+import jwtDecode from 'jwt-decode';
+
 
 class AuthService {
   constructor() {
@@ -27,8 +29,9 @@ class AuthService {
     }
   }
   getUser() {
-  const user = localStorage.getItem('user');
-  return user ? JSON.parse(user) : null;
+ const token = localStorage.getItem('accessToken');
+const decodedToken = jwtDecode(token);
+console.log(decodedToken);
 }
 
 }

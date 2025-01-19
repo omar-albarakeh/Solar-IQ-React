@@ -1,6 +1,7 @@
 import AuthService from '../services/AuthService';
 
 function UserProfile() {
+    
   const user = AuthService.getUser();
 
   if (!user) {
