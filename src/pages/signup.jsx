@@ -1,5 +1,5 @@
 import React from 'react';
-import AuthContainer from './components/AuthContainer';
+import AuthContainer from '../components/AuthContainer';
 import AuthTitle from '../components/AuthTitle';
 import ErrorMessage from '../components/ErrorMessage';
 import InputField from '../components/InputField';
@@ -8,6 +8,14 @@ import AuthButton from '../components/AuthButton';
 
 const Signup = () => {
 
+ const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    type: 'user', 
+    phone: '',
+    address: '',
+  });
   return (
     <AuthContainer>
       <AuthTitle title="Signup" subtitle="Create your account" />
