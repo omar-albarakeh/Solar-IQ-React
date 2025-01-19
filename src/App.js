@@ -5,8 +5,10 @@ import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import UserPanel from './pages/UserPanel';
 import MarketPanel from './pages/MarketPanel';
-import CreateItem from './pages/market/createitem';
+import CreateItem from "./pages/market/createitem";
 import DeleteItem from './pages/market/DeleteItem';
+import ItemList from './pages/market/ItemList'; 
+import UpdateItemForm from './pages/market/UpdateItemForm';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
           <Route path="/market-panel" element={<MarketPanel />} />
           <Route path="/create-item" element={<CreateItem />} />
           <Route path="/delete-item" element={<DeleteItem />} />
+          <Route path="/items" element={<ItemList />} /> 
+          <Route path="/update-item/:id" element={<UpdateItemForm />} /> 
           <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
       </div>
