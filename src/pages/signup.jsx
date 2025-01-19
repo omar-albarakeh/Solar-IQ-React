@@ -21,6 +21,15 @@ const Signup = () => {
           onChange={handleChange}
           required
         />
+        <InputField
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+       
       </form>
     </AuthContainer>
   );
