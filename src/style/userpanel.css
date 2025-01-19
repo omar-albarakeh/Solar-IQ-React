@@ -1,0 +1,12 @@
+/* user-panel.css */
+.user-panel-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+
