@@ -10,4 +10,8 @@ export const getItemById = async (id) => {
   return axios.get(`${apiUrl}/${id}`);
 };
 
+export const createItem = async (itemData) => {
+  return axios.post(apiUrl, itemData);
+};
+
 
