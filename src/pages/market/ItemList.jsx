@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getItems } from "../../services/marketservice";
+import "../../style/itemlist.css";
 
 const ItemList = () => {
   const [items, setItems] = useState([]);
