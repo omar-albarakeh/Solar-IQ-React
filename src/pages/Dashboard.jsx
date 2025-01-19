@@ -3,7 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import {jwtDecode} from 'jwt-decode';
 
 const Dashboard = () => {
-  
+
+
+  if (userData && userData.type === 'admin') {
     return (
       <div className="dashboard-container">
         <h2>Welcome, Admin</h2>
@@ -15,5 +17,7 @@ const Dashboard = () => {
     );
   }
 
+  return null;
+};
 
 export default Dashboard;
