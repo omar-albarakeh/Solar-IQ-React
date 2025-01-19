@@ -10,6 +10,7 @@ const Login = () => {
 
   return (
     <AuthContainer>
+         <AuthTitle title="Login" subtitle="Welcome back! Please login to your account." />
     </AuthContainer>
   );
 };
