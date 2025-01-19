@@ -3,7 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import {jwtDecode} from 'jwt-decode';
 
 const Dashboard = () => {
+  const [userData, setUserData] = useState(null);
+  const navigate = useNavigate();
 
+  
 
   if (userData && userData.type === 'admin') {
     return (
