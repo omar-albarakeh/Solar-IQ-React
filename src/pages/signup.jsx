@@ -16,6 +16,10 @@ const Signup = () => {
     phone: '',
     address: '',
   });
+
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
   return (
     <AuthContainer>
       <AuthTitle title="Signup" subtitle="Create your account" />
