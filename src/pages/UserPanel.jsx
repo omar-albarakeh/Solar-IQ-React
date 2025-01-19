@@ -16,7 +16,23 @@ const UserPanel = ({ token }) => {
             <th>Actions</th>
           </tr>
         </thead>
-        
+        <tbody>
+          {users.map((user) => (
+            <tr key={user.id}>
+              <td>{user.name}</td>
+              <td>{user.email}</td>
+              <td>{user.phone}</td>
+              <td>{user.blocked ? 'Blocked' : 'Active'}</td>
+              <td>
+                {user.blocked ? (
+                  <button onClick={() => handleUnblockUser(user.id)}>Unblock</button>
+                ) : (
+                  <button onClick={() => handleBlockUser(user.id)}>Block</button>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );
