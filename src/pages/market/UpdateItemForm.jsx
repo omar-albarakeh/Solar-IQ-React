@@ -62,7 +62,23 @@ const UpdateItemForm = () => {
           Capacity:
           <input type="number" name="capacity" value={item.capacity} onChange={handleChange} />
         </label>
-        
+        <label>
+          Category:
+          <input type="text" name="category" value={item.category} onChange={handleChange} />
+        </label>
+        <label>
+          Description:
+          <textarea name="description" value={item.description} onChange={handleChange} />
+        </label>
+        <label>
+          Image URL:
+          <input type="text" name="imageUrl" value={item.imageUrl} onChange={handleChange} />
+        </label>
+        <label>
+          Quantity:
+          <input type="number" name="quantity" value={item.quantity} onChange={handleChange} />
+        </label>
+        <button type="submit">Update Item</button>
       </form>
     </div>
   );
