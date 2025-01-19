@@ -1,90 +1,99 @@
 import React, { useEffect, useState } from 'react';
 import { fetchAllUsers, blockUser, unblockUser } from '../services/userpanelservice';
-import AuthService from '../services/AuthService';
+import '../style/userpanel.css'; 
 
 const UserManagement = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const token = localStorage.getItem('accessToken');
+  const token = localStorage.getItem('accessToken'); 
+
+ 
+  const fetchUsers = async () => {
+    try {
+      const data = await fetchAllUsers(token);
+      setUsers(data);
+      setLoading(false);
+    } catch (err) {
+      setError(err.message);
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const getUsers = async () => {
-      try {
-        const data = await fetchAllUsers(token);
-        setUsers(data); 
-        setLoading(false);
-      } catch (err) {
-        setError(err.message);
-        setLoading(false);
-      }
-    };
-
-    getUsers();
+    fetchUsers();
   }, [token]);
+
 
   const handleBlockUser = async (userId) => {
     try {
-      const updatedUser = await blockUser(userId, token);
-      setUsers((prevUsers) =>
-        prevUsers.map((user) => (user.id === userId ? updatedUser : user))
-      );
+      await blockUser(userId, token);
+      await fetchUsers();
     } catch (err) {
       setError(err.message);
     }
   };
 
+ 
   const handleUnblockUser = async (userId) => {
     try {
-      const updatedUser = await unblockUser(userId, token);
-      setUsers((prevUsers) =>
-        prevUsers.map((user) => (user.id === userId ? updatedUser : user))
-      );
+      await unblockUser(userId, token); 
+      await fetchUsers(); 
     } catch (err) {
       setError(err.message);
     }
+  };
+
+
+  const dismissError = () => {
+    setError(null);
   };
 
   if (loading) {
-    return <div>Loading users...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
+    return <div className="user-panel-container">Loading users...</div>;
   }
 
   return (
-    <div>
-      <h1>User Management</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Status</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user) => (
-            <tr key={user.id}>
-              <td>{user.name}</td>
-              <td>{user.email}</td>
-              <td>{user.phone}</td>
-              <td>{user.blocked ? 'Blocked' : 'Active'}</td>
-              <td>
-                {user.blocked ? (
-                  <button onClick={() => handleUnblockUser(user.id)}>Unblock</button>
-                ) : (
-                  <button onClick={() => handleBlockUser(user.id)}>Block</button>
-                )}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="user-panel-container">
+      <h2>User Management</h2>
+
+      {error && (
+        <div className="error-message">
+          <span>{error}</span>
+          <button className="dismiss-btn" onClick={dismissError}>
+            Dismiss
+          </button>
+        </div>
+      )}
+
+      <div className="user-list">
+        {users.map((user) => (
+          <div key={user.id} className="user-item">
+            <div className="user-info">
+              <div className="user-name">{user.name}</div>
+              <div className="user-email">{user.email}</div>
+            </div>
+            <div>
+              {user.blocked ? (
+                <button
+                  className="action-btn unblock-btn"
+                  onClick={() => handleUnblockUser(user.id)}
+                >
+                  Unblock
+                </button>
+              ) : (
+                <button
+                  className="action-btn block-btn"
+                  onClick={() => handleBlockUser(user.id)}
+                >
+                  Block
+                </button>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
