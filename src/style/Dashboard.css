@@ -43,3 +43,29 @@
   background-color: #45a049; 
 }
 
+.dashboard-container button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-container button:focus {
+  outline: none;
+}
+
+
+@media (max-width: 600px) {
+  .dashboard-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .dashboard-container button {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+  }
+
+  .dashboard-container > div {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
